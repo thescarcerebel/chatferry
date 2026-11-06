@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "chatferry"
+version = "0.2.0"
+description = "Move WhatsApp chats and media from an Android phone to an iPhone that is already set up"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
+dependencies = [
+    "cryptography>=41",
+    "pymobiledevice3>=11.19",
+]
+
+[project.scripts]
+chatferry = "chatferry.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/chatferry"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
